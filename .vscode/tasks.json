@@ -1,0 +1,63 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+		{
+            "label": "Build no-opt",
+            "type": "shell",
+            "command": "wasm-pack build --target web --no-typescript --dev",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": [],
+            "detail": "Kompiluje projekt Rust do WebAssembly przy użyciu wasm-pack."
+        },
+        {
+            "label": "Build project",
+            "type": "shell",
+            "command": "wasm-pack build --target web",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": [],
+            "detail": "Kompiluje projekt Rust do WebAssembly przy użyciu wasm-pack."
+        },
+		{
+            "label": "Start Simple HTTP Server",
+            "type": "shell",
+            "command": "web-dev-server --open index.html --node-resolve",
+            "isBackground": true,
+            "group": "test",
+            "presentation": {
+                "reveal": "never"
+            },
+            "problemMatcher": [
+                {
+                    "pattern": [
+                        {
+                            "regexp": ".",
+                            "file": 1,
+                            "location": 2,
+                            "message": 3
+                        }
+                    ],
+                    "background": {
+                        "activeOnStart": true,
+                        "beginsPattern": "Serving on",
+                        "endsPattern": "Serving on"
+                    }
+                }
+            ],
+            "detail": "Uruchamia serwer HTTP do serwowania plików Wasm."
+        }
+    ]
+}
