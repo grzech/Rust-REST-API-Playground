@@ -3,16 +3,11 @@ name = "statistics_analyzer"
 version = "0.1.0"
 edition = "2024"
 
-[lib]
-path = "src/main.rs"
-crate-type = ["cdylib"]
-
 [dependencies]
 slint = "1.14" 
-
-[target.'cfg(target_family = "wasm")'.dependencies]
-wasm-bindgen = "0.2"
-getrandom = { version = "0.2.14", features = ["js"] }
+reqwest = { version = "0.11", features = ["json", "blocking", "native-tls"] }
+serde = "1.0.228"
+tokio = { version = "1", features = ["full"] }
 
 [build-dependencies]
 slint-build = "1.14"

@@ -1,24 +1,23 @@
+import { ScrollView } from "std-widgets.slint";
+
 export component MainWindow inherits Window {
-    width: 400px;
-    height: 300px;
-
+    in-out property <string> json_data;
+    width: 910px;
     VerticalLayout {
-        alignment: center;
+        ScrollView {
+            vertical-stretch: 1;
+            vertical-scrollbar-policy: always-on;
+                        
+            VerticalLayout {
+                padding: 5px;
 
-        Text {
-            text: "Hello Slint w Wasm!";
-            color: green;
-            font-size: 24px;
-        }
-
-        Text {
-            text: "Projekt działa w przeglądarce!";
-            color: #666;
-        }
-
-        Text {
-            text: "Updated second time";
-            color: #000000;
+                Text {
+                    text: json_data;
+                    color: #000000;
+                    wrap: word-wrap;
+                    min-height: self.preferred-height; 
+                }
+            }
         }
     }
 }
